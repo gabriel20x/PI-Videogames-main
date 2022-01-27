@@ -7,22 +7,22 @@ const router = Router();
 
 router.get('/', async (req,res,next) => {
     try {
-        const apiGenres = (await axios(`https://api.rawg.io/api/genres?key=${API_KEY}`)).data.results
-        const filteredApiGenres = apiGenres.map(genre => {
-            return {
-                name : genre.name,
+        const genres = await Genre.findAll()
+        if(genres.length < 1){
+            const apiGenres = (await axios(`https://api.rawg.io/api/genres?key=${API_KEY}`)).data.results
+            // const filteredApiGenres = apiGenres.map(genre => {
+            //     return {
+            //         name : genre.name,
+            //     }
+            // })
+            for await(let genre of apiGenres) {
+                await Genre.create({
+                        name : genre.name
+                })
             }
-        })
-        filteredApiGenres.forEach(async (genre) => {
-            await Genre.findOrCreate({
-                where : {name : genre.name},
-                defaults: {
-                    name : genre.name
-                }
-            })
-        })
-        const localGenres = await Genre.findAll()
-        res.send(localGenres)
+            const localGenres = await Genre.findAll()
+            return res.send(localGenres)
+        } else res.send(genres)
     } catch (error) {
         next(error)
     }

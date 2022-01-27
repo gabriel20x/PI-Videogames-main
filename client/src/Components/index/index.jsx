@@ -1,5 +1,7 @@
+import {Link} from 'react-router-dom'
+
 export default function Index(){
   return <>
-    <p>Soy Index</p>
+    <Link to={'/videogames'}>Press Start</Link>
   </>
 }

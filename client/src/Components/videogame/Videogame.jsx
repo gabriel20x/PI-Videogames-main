@@ -1,9 +1,13 @@
-import { useEffect } from "react"
-import { useDispatch,useSelector } from "react-redux"
-import { getVideogames } from "../../Redux/actions"
+import { useNavigate } from "react-router"
+
 
 export default function Videogame({videogame}){
+  const navigate = useNavigate()
+  let handleDetail = () =>{
+    navigate(videogame.id.toString())
+  }
+
   return <>
-    <p>{videogame.id} {videogame.name}</p>
+    <p onClick={handleDetail}>{videogame.id} {videogame.name}</p>
   </>
 }

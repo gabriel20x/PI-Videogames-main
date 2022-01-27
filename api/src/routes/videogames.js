@@ -10,16 +10,16 @@ const { API_KEY } = process.env;
 // /videogames debe obtener un listado de al menos 100
 router.get('/', async (req,res,next) => {
     try {
-    const {name} = req.query
-    let apiVideogames,localVideogames
+    const {name,page} = req.query
+    let apiVideogames = [],localVideogames = []
     const condition = { where: { name: { [Op.iLike]: `%${name}%`} },
                         includes: Genre}
     if(name){
         apiVideogames = await axios(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`)
         localVideogames = await Videogame.findAll(condition)
     } else {
-        apiVideogames = await axios(`https://api.rawg.io/api/games?key=${API_KEY}`)
-        localVideogames = await Videogame.findAll({includes: Genre})
+        apiVideogames = await axios(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=40&page=${page}`)
+        if(page == 1) localVideogames = await Videogame.findAll({includes: Genre})
     }
     const filteredApiVideogames = apiVideogames.data.results.map(game => {
         return {
