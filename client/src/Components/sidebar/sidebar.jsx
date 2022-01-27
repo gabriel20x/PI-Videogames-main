@@ -7,7 +7,7 @@ export default function Sidebar(){
   let [name,setName] = useState()
   let genres = useSelector(state => state.genres)
   let globalFilter = useSelector(state => state.filters)
-  // let [filters,setFilters] = useState(globalFilter)
+  let [filters,setFilters] = useState(globalFilter)
   const dispatch = useDispatch()
 
   let searchVideogame = () => {
@@ -23,17 +23,15 @@ export default function Sidebar(){
 
   const handleCheckbox = function(e) {
     if(e.checked){
-      // setFilters({
-      //   ...filters,
-      //   genres: [...filters.genres, e.name]
-      // });
-      globalFilter.genres.push(e.name)
+      setFilters({
+        ...filters,
+        genres: [...filters.genres, e.name]
+      });
     } else {
-      // setFilters({
-      //   ...filters,
-      //   genres: filters.genres.filter(name => name != e.name)
-      // });
-      globalFilter.genres = globalFilter.genres.filter(name => name != e.name)
+      setFilters({
+        ...filters,
+        genres: filters.genres.filter(name => name != e.name)
+      });
     }
 
   }
@@ -55,14 +53,10 @@ export default function Sidebar(){
 
   useEffect(()=>{
     dispatch(getGenres())
-    console.log(filters)
-    console.log(globalFilter)
   },[])
 
   useEffect(()=>{
-    console.log(filters)
-    console.log(globalFilter)
-    // dispatch(updateFilter(filters))
+    dispatch(updateFilter(filters))
   },[filters])
 
   return <>
@@ -87,7 +81,7 @@ export default function Sidebar(){
     </ul>
   </div>
   <div onChange={(e) => handleSelect(e.target)}>
-    <select name="order" id="order">
+    <select name="alphabetic" id="alphabetic">
       <option value="none">Select a filter/None</option>
       <option value="asc">asc</option>
       <option value="desc">desc</option>

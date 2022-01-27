@@ -13,20 +13,20 @@ router.get('/', async (req,res,next) => {
     const {name,page} = req.query
     let apiVideogames = [],localVideogames = []
     const condition = { where: { name: { [Op.iLike]: `%${name}%`} },
-                        includes: Genre}
+                        include: Genre}
     if(name){
         apiVideogames = await axios(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`)
         localVideogames = await Videogame.findAll(condition)
     } else {
         apiVideogames = await axios(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=40&page=${page}`)
-        if(page == 1) localVideogames = await Videogame.findAll({includes: Genre})
+        if(page == 1) localVideogames = await Videogame.findAll({include: Genre})
     }
     const filteredApiVideogames = apiVideogames.data.results.map(game => {
         return {
             id : game.id,
             name : game.name,
             // released : game.released,
-            // rating : game.rating,
+            rating : game.rating,
             // platforms : game.platforms,
             genres : game.genres,
             background_image : game.background_image
