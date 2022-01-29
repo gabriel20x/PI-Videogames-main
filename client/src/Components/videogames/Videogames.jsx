@@ -3,14 +3,22 @@ import { useDispatch,useSelector } from "react-redux"
 import { getVideogames } from "../../Redux/actions"
 import Videogame from "../videogame/Videogame"
 import Sidebar from "../sidebar/sidebar"
+import Pagination from "../pagination/pagination"
+import { useState } from "react"
+import styles from './videogames.module.css'
 
 export default function Videogames(){
   let videogames = useSelector((state) => state.videogames)
   let filters = useSelector(state => state.filters)
+  let [page,setPage] = useState(1)
+  let [videogamesForPage,setForPage] = useState(15)
   let dispatch = useDispatch()
   useEffect(()=>{
-    dispatch(getVideogames())
+      dispatch(getVideogames())
   },[])
+  useEffect(()=>{
+    setPage(1)
+  },[filters])
   let listOfGames = (videogames) => {
     let filtered = videogames.filter((videogame)=>{
       if(filters.onlyLocal) {
@@ -50,10 +58,27 @@ export default function Videogames(){
     }
     return ordered
   }
-  return <>
-  <Sidebar/>
-  {listOfGames(videogames).map((videogame)=>{
-    return <Videogame videogame = {videogame} key={videogame.id} />
-  })}
-  </>
+  let paginate = (number) => {
+    setPage(number)
+  }
+  let games = listOfGames(videogames)
+  let indexOfFirstVideogame = (page - 1) * videogamesForPage
+  let indexOfLastVideogame = indexOfFirstVideogame + videogamesForPage
+  let paginatedVideogames = games.slice(indexOfFirstVideogame,indexOfLastVideogame)
+
+  return <div className={styles.container}>
+    <div className={styles.sidebar}>
+      <Sidebar/>
+    </div>
+    <div>
+      <div className={styles.videogameList}>
+        {paginatedVideogames.map((videogame)=>{
+          return <Videogame videogame = {videogame} key={videogame.id ? videogame.id : videogame.Id } />
+        })}
+      </div>
+      <div className={styles.pagination}>
+        <Pagination totalVideogames ={games.length} videogamesForPage={videogamesForPage} paginate={paginate} />
+      </div>
+    </div>
+  </div>
 }

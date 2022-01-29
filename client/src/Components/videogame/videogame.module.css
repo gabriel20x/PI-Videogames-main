@@ -1,0 +1,70 @@
+.container{
+    text-align: center;
+    background-color: rgba(19, 18, 18, 0.781);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 12px;
+  }
+  
+  .videogameImg
+  {
+    display:table-cell;
+    width: 450px; height:200px;
+    background-size:cover;
+    overflow: hidden;
+    position: relative;
+    background-position-x: center;
+  }
+  .videogameImg .shadow
+  {
+    background-color:rgba(19,30,33,0.4);
+    position: absolute;
+    z-index: 1000;
+    top:0;left:0;right:0;bottom:0;
+  }
+  .videogameImg:hover .shadow
+  {
+    background-color:rgba(16,23,41,0);
+  }
+  .videogameImg .genreBanner
+  {
+    position: absolute;
+    text-transform: uppercase;
+    font-family: 'Roboto';
+    padding: 7px;
+    z-index: 1000;
+    top:50%;left:-80%;
+    color:#ffffff;
+    font-weight: 300;
+    font-size: 13px; width: 80%;
+    -webkit-transition: all 0.7s;
+    -moz-transition: all 0.7s;
+    -ms-transition: all 0.7s;
+    transition: all 0.7s;
+  
+  }
+  .videogameImg:hover .genreBanner
+  {
+    background-color:#1e4944; left:0px;
+  }
+  .videogameImg .ratingBanner
+  {
+    position: absolute;
+    font-family: 'Roboto';
+    padding: 10px;
+    z-index: 1000;
+    top:75%;right:-85%;
+    margin-top: 25px;
+    color:#ffffff;
+    font-weight: 300;
+    font-size: 15px; 
+    width: 20%;
+    -webkit-transition: all 0.7s;
+    -moz-transition: all 0.7s;
+    -ms-transition: all 0.7s;
+    transition: all 0.7s;
+  }
+  .videogameImg:hover .ratingBanner
+  {
+    background-color:#417c74;right:0px;
+  }

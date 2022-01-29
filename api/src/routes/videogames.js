@@ -71,6 +71,7 @@ router.get('/:id',async (req,res,next) => {
 
 router.post('/', async (req,res,next) => {
     const { name, description, released, rating, platforms, genres} = req.body
+    console.log(platforms,genres)
     const newVideogame = await Videogame.create({
         // where: {name: name},
         // defaults: {

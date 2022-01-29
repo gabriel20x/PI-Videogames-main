@@ -64,3 +64,19 @@ export function updateFilter(filters){
       dispatch({ type: actions.UPDATE_FILTER, payload: filters});
     }
 }
+
+export function createVideogame(videogame){
+  return async function(dispatch) {
+    try {
+      console.log(JSON.stringify(videogame))
+      const response = await fetch('http://localhost:3001/videogames', {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify(videogame), // data can be `string` or {object}!
+        headers:{'Content-Type': 'application/json'}
+      })
+      // dispatch({ type: actions.CREATE_VIDEOGAME, payload: response});
+    } catch (error) {
+      console.log(error);
+    }
+      }
+}
