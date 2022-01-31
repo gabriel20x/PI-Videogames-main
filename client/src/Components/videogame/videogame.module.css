@@ -14,6 +14,7 @@
     overflow: hidden;
     position: relative;
     background-position-x: center;
+    cursor: pointer;
   }
   .videogameImg .shadow
   {

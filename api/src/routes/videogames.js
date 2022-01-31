@@ -48,7 +48,7 @@ router.get('/:id',async (req,res,next) => {
     let videogame
     try {
         if(isNaN(id)){
-            videogame = await Videogame.findByPk(id)
+            videogame = await Videogame.findByPk(id,{ include : Genre})
             // res.send(localVideogame)
         } else {
             const apiVideogame = (await axios(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)).data

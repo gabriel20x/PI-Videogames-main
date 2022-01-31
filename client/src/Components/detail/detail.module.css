@@ -1,0 +1,60 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 70%;
+    margin: auto;
+}
+
+
+.card{
+    display: grid;
+    grid-template-columns: 1000px;
+    grid-template-rows: auto 300px 100px;
+    grid-template-areas: "image" "description" "properties";
+    border-radius: 18px;
+    background: white;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+    font-family: roboto;
+    text-align: center;
+    margin: 10px;
+}
+
+.image {
+    grid-area: image;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.image img{
+    max-width: 100%;
+}
+
+.description{
+    grid-area: description;
+    
+}
+
+.properties{
+    grid-area: properties;
+    display: grid;
+    grid-template-columns: 3fr 3fr 1fr;
+    grid-template-rows: 1fr;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background: rgb(255, 7, 110);
+}
+
+.genres{
+
+}
+
+.platforms{
+
+}
+
+.rating{
+
+}
+

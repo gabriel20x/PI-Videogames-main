@@ -10,8 +10,8 @@ export default function Videogame({videogame}){
   }
   const backgroundImage = { backgroundImage: `url(${videogame.background_image})`}
   return <>
-  <div className={styles.container} onClick={handleDetail}>
-  <div className={styles.videogameImg} style={backgroundImage}>
+  <div className={styles.container}>
+  <div className={styles.videogameImg} style={backgroundImage}  onClick={handleDetail}>
     <div className={styles.shadow}>
         <div className={styles.genreBanner}>
           {videogame.genres.map((genre)=>{
