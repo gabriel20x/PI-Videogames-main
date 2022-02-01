@@ -10,14 +10,11 @@
     justify-content: flex-start;
 }
 
-.button {
-    padding-left: 60px;
-    font-size: 3rem;
-    font-weight: bold;
+.button_container{
+    margin-left: 10vw;
 }
 
-.button p{
-    font-family: 'Press Start 2P', cursive;
-    text-decoration: none;
-    color: black;
+.button{
+    background: none;
+    border: none;
 }

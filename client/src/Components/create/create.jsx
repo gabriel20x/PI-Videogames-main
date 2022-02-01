@@ -158,7 +158,7 @@ export default function Create() {
         />
         <fieldset className={styles.checkbox}>
           <fieldset className={styles.genre}>
-            <legend>Genres{error.genres && <>{error.genres}</>}</legend>
+            <legend>Genres{error.genres && <p className={styles.error}>{error.genres}</p>}</legend>
             {genres.length < 1 ? (
               <Loading />
             ) : (
@@ -175,7 +175,7 @@ export default function Create() {
             )}
           </fieldset>
           <fieldset className={styles.platform}>
-            <legend>Platforms{error.platforms && <>{error.platforms}</>}</legend>
+            <legend>Platforms{error.platforms && <p className={styles.error}>{error.platforms}</p>}</legend>
             {platforms.map((platform, index) => {
               return (
                 <Checkbox
@@ -188,9 +188,9 @@ export default function Create() {
             })}
           </fieldset>
         </fieldset>
-        <fieldset className={styles.button}>
-          <button type="submit" disabled={Object.values(error).length > 0}>
-            Create
+        <fieldset className={`button_container ${styles.button}`}>
+          <button className='button_list' type="submit" disabled={Object.values(error).length > 0}>
+            <div className="button_list_item">Create</div>
           </button>
         </fieldset>
       </form>

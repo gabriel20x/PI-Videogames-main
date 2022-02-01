@@ -70,6 +70,18 @@ export default function Sidebar({filters,setFilters}) {
   };
 
   const handleReset = () =>{
+    if(filters.genres.length > 0){
+      filters.genres.forEach(genre => {
+        console.log(genre)
+        document.querySelector(`input[name='${genre}']`).checked = false
+      })
+    }
+    if(filters.onlyLocal) {
+      document.querySelector(`input[name='LocalDB']`).checked = false
+    }
+    if(filters.order.method !== 'none') {
+      document.querySelector(`select[name='order']`).options.selectedIndex = 0
+    }
     setFilters( {
       onlyLocal : false,
       genres : [],
@@ -79,6 +91,11 @@ export default function Sidebar({filters,setFilters}) {
       }
     });
     if(name.active) dispatch(getVideogames())
+    setName({
+      ...name,
+      name: '',
+      active: false
+    });
   }
 
   useEffect(() => {
@@ -111,8 +128,10 @@ export default function Sidebar({filters,setFilters}) {
           <option value="rating_asc">Worst to Best</option>
         </select>
       </div>
-      <div>
-        <button onClick={() => handleReset()}>Reset Filter</button>
+      <div className={'button_container'}>
+        <button className={`button_list  ${styles.button}`} onClick={() => handleReset()}>
+          <div className={'button_list_item'}>Reset Filter</div>
+        </button>
       </div>
     </>
   );

@@ -14,7 +14,7 @@ export default function Index({ name, type, error, action }) {
               type="text"
               name="description"
             />{" "}
-            {error.description && <p>{error.description}</p>}
+            {error.description && <span className={styles.error}>{error.description}</span>}
           </>
         ) : (
           <>
@@ -26,7 +26,7 @@ export default function Index({ name, type, error, action }) {
               min="1900-01-01"
               max="2022-12-31"
             />{" "}
-            {error[name] && <p>{error[name]}</p>}
+            {error[name] && <p className={styles.error}>{error[name]}</p>}
           </>
         )}
       </fieldset>

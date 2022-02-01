@@ -51,5 +51,15 @@ select::-ms-expand {
 
 .checklist ul {
   list-style: none;
+}
 
+.button{
+  background: none;
+  border: none;
+}
+
+.button div{
+  background: none;
+  border: none;
+  font-size: small;
 }

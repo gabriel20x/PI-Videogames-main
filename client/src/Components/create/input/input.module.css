@@ -42,6 +42,12 @@
   border-color: rgb(126, 239, 132);
 } */
 
+.error{
+  text-align: start;
+  color: rgb(197, 9, 9);
+  font-size: small;
+}
+
 .input[type="text"] {
   height: 34px;
 }

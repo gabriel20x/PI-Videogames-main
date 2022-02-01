@@ -12,8 +12,6 @@
 .list {
   display: flex;
   padding: 0;
-}
-.item {
   list-style: none;
 }
 
