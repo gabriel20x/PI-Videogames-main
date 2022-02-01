@@ -1,0 +1,47 @@
+.container {
+}
+
+.name {
+  grid-area: name;
+  text-align: start;
+}
+
+.released {
+  grid-area: released;
+}
+
+.rating {
+  grid-area: rating;
+}
+
+.description {
+  grid-area: description;
+}
+
+.input[type="text"],
+.textarea {
+  display: block;
+  padding: 0.5rem;
+  width: 100%;
+  background-color: white;
+  border-radius: 0.25rem;
+  border: 1px solid #e5e5e5;
+  outline: none;
+
+  /* List some properties that might change */
+  transition-property: none;
+  transition-duration: none;
+}
+
+.input[type="text"] {
+  text-align: center;
+}
+
+/* .input[type="text"],
+.textarea:focus {
+  border-color: rgb(126, 239, 132);
+} */
+
+.input[type="text"] {
+  height: 34px;
+}

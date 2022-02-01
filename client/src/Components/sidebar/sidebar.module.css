@@ -13,7 +13,6 @@ select {
   color: #fff;
   cursor:pointer;
   font-size: 0.8em;
-  /* font-family: "Open Sans", sans-serif; */
   text-align: center;
   padding-right: 10%;
 }
@@ -29,6 +28,7 @@ select::-ms-expand {
   background: #5c6664;
   overflow: hidden;
   border-radius: 0.25em;
+  margin: auto;
 }
 .select::after {
   content: "\25BC";

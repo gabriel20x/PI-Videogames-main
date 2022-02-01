@@ -4,11 +4,13 @@ import { useDispatch,useSelector } from "react-redux"
 import { useParams } from "react-router"
 import { getVideogameDetail,cleanDetail } from "../../Redux/actions"
 import styles from './detail.module.css'
+import localImg from '../../Images/localimg.png'
 
 export default function Detail(){
   let {id} = useParams()
   let videogame = useSelector(state => state.videogameDetail)
   let dispatch = useDispatch()
+  let img = videogame.background_image ? videogame.background_image : localImg
   useEffect(()=>{
     dispatch(getVideogameDetail(id))
     return dispatch(cleanDetail())
@@ -18,7 +20,7 @@ export default function Detail(){
     <div className={styles.card}>
       <div className={styles.image}>
         <p>{videogame.name}</p>
-        <img src={videogame.background_image} alt={videogame.name}/>
+        <img src={img} alt={videogame.name}/>
       </div>
       
       <div className={styles.description} dangerouslySetInnerHTML={{__html: videogame.description}}></div>
@@ -40,6 +42,11 @@ export default function Detail(){
               return <span>{platform}</span>
             }
           })}
+        </div>
+
+
+        <div className={styles.released}>
+          {videogame.released}
         </div>
 
         <div className={styles.rating}>

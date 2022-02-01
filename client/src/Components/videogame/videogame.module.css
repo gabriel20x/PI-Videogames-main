@@ -4,6 +4,9 @@
     padding: 20px;
     margin: 10px;
     border-radius: 12px;
+    max-width: 30%;
+    height: 270px;
+    min-width: 250px;
   }
   
   .videogameImg

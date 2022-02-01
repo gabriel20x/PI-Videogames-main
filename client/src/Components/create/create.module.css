@@ -20,39 +20,14 @@
     text-align: justify;
 }
 
-.form li{
-    list-style: none;
-}
-
-.genre li{
-    display: grid;
-    grid-template-columns: 50px auto;
-    justify-content: start;
-    align-items: flex-end;
-}
-
-
-.name{
-    grid-area: name;
-    text-align:start;
-}
-
-.released{
-    grid-area: released;
-}
-
-.rating{
-    grid-area: rating;
-}
-
-.description{
-    grid-area: description;
-}
-
 .checkbox{
     grid-area: checkbox;
     display: flex;
     flex-direction: row;
+}
+
+.checkbox legend{
+  min-height: 32px;
 }
 
 .genre{
@@ -60,10 +35,11 @@
     grid-template-columns: 50% 50%;
     align-items: center;
     width: 65%;
+    padding: 0;
 }
 
 .platform{
-    width: auto;
+    padding: 0;
 }
 
 .button{
@@ -71,8 +47,6 @@
 }
 
 .form fieldset {
-    margin: 10px;
-    padding: 10px;
     border: none;
 }
 
@@ -84,110 +58,4 @@
     display: inline-block;
     margin-bottom: .5rem;
     text-align: center;
-}
-
-.genre li label{
-    text-align: start;
-    margin: 0;
-}
-
-.form input[type='text'],
-textarea {
-  display: block;
-  padding: .5rem;
-  width: 100%;
-  background-color: white;
-  border-radius: .25rem;
-  border: 1px solid #e5e5e5;
-  outline: none;
-      
-  /* List some properties that might change */
-  transition-property: none;
-  transition-duration: none;
-  
-}
-
-.form input[type='text']{
-    text-align: center;
-}
-
-.form input[type='text'],
-textarea:focus {
-  border-color: rgb(126, 239, 132);
-}
-
-/* .form textarea {
-  max-width: 300px;
-  height: ;
-} */
-
-.form input[type='text']{
-  height: 34px;
-}
-
-.form input[type='checkbox'] {
-  position: relative;
-  top: 5px;
-  width: 22px;
-  height: 22px;
-  margin: 0 .5rem;
-  background-color: white;
-  border: 1px solid #e5e5e5;
-  outline: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  border-radius: 5px;
-  
-  /* List some properties that might change */
-  transition-property: none;
-  transition-duration: none;
-}
-
-.form input[type='checkbox']:checked {
-    border: none;
-}
-.form input[type='checkbox']:checked:after {
-  display: block;
-  content: '';
-  height: 4px;
-  width: 10px;
-  border-bottom: 3px solid #fff;
-  border-left: 3px solid #fff;
-  transform: translate(5px,6px) rotate(-45deg) scale(1);
-}
-
-.form button {
-  display: block;
-  margin: 3em auto;
-  padding: .5rem 2rem;
-  font-size: 125%;
-  color: white;
-  border: none;
-  border-radius: .25rem;
-  background-color: rgb(239,126,173);
-  outline: none;
-  box-shadow: 0 .4rem .1rem -.3rem rgba(0,0,0,.1);
-
-  /* We'll talk about this next */
-  transform: perspective(300px) scale(.95) translateZ(0);
-  transform-style: preserve-3d;
-
-  /* List the properties that you're looking to transition.
-     Try not to use 'all' */
-  transition-property: none;
-
-  /* This applies to all of the above properties */
-  transition-duration: none;
-    
-}
-.form button:hover {
-  cursor: pointer;
-  background-color: rgb(255,150,200);
-  box-shadow: 0 0 0 0 rgba(0,0,0,0);
-  transform: scale(1.1) rotateX(0);
-}
-
-.form button:active {
-  background-color: rgb(239,126,173);
-  transform: scale(1.05) rotateX(-10deg);
 }

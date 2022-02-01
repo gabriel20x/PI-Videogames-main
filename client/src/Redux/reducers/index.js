@@ -4,14 +4,15 @@ const initialState = {
   videogames: [],
   genres: [],
   videogameDetail: {},
-  filters: {
-    onlyLocal : false,
-    genres : [],
-    order : {
-      type: 'alphabetic',
-      method: 'none' 
-    }
-  }
+  // filters: {
+  //   onlyLocal : false,
+  //   genres : [],
+  //   order : {
+  //     type: 'alphabetic',
+  //     method: 'none' 
+  //   }
+  // },
+  isLoading : false
 };
 
 export default function rootReducer(state=initialState,action){
@@ -41,10 +42,15 @@ export default function rootReducer(state=initialState,action){
         ...state,
         videogameDetail : action.payload
       }
-    case actions.UPDATE_FILTER:
+    // case actions.UPDATE_FILTER:
+    //   return {
+    //     ...state,
+    //     filters : action.payload
+    //   }
+    case actions.IS_LOADING:
       return {
         ...state,
-        filters : action.payload
+        isLoading : action.payload
       }
     default:
       return state

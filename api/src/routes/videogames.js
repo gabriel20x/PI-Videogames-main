@@ -49,7 +49,6 @@ router.get('/:id',async (req,res,next) => {
     try {
         if(isNaN(id)){
             videogame = await Videogame.findByPk(id,{ include : Genre})
-            // res.send(localVideogame)
         } else {
             const apiVideogame = (await axios(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)).data
             videogame = {
@@ -71,16 +70,12 @@ router.get('/:id',async (req,res,next) => {
 
 router.post('/', async (req,res,next) => {
     const { name, description, released, rating, platforms, genres} = req.body
-    console.log(platforms,genres)
     const newVideogame = await Videogame.create({
-        // where: {name: name},
-        // defaults: {
             name,
             description,
             released,
             rating,
             platforms
-        // }
     })
     genres.forEach(async (genre) => {
         const actualGenre = await Genre.findOne({
