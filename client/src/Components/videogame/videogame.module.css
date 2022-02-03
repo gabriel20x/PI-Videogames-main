@@ -1,6 +1,6 @@
 .container{
     text-align: center;
-    background-color: rgba(19, 18, 18, 0.781);
+    background-color: #262626;
     padding: 20px;
     margin: 10px;
     border-radius: 12px;
@@ -8,9 +8,14 @@
     height: 270px;
     min-width: 250px;
   }
+
+.container:hover{
+  transform: scale(1.1);
+}
   
   .videogameImg
   {
+    background-color: white;
     display:table-cell;
     width: 450px; height:200px;
     background-size:cover;
@@ -49,7 +54,7 @@
   }
   .videogameImg:hover .genreBanner
   {
-    background-color:#1e4944; left:0px;
+    background-color:#512da8; left:0px;
   }
   .videogameImg .ratingBanner
   {
@@ -57,7 +62,7 @@
     font-family: 'Roboto';
     padding: 10px;
     z-index: 1000;
-    top:75%;right:-85%;
+    top:73%;right:-85%;
     margin-top: 25px;
     color:#ffffff;
     font-weight: 300;
@@ -70,5 +75,19 @@
   }
   .videogameImg:hover .ratingBanner
   {
-    background-color:#417c74;right:0px;
+    background-color:#512da8;right:0px;
   }
+
+  .gameName {
+    color: white;
+    display: flex;
+    margin: 7px 0;
+  }
+
+.longName:hover{
+  height: 280px;
+}
+
+.largeName:hover{
+  font-size: 12px;
+}

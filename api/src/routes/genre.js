@@ -10,11 +10,6 @@ router.get('/', async (req,res,next) => {
         const genres = await Genre.findAll()
         if(genres.length < 1){
             const apiGenres = (await axios(`https://api.rawg.io/api/genres?key=${API_KEY}`)).data.results
-            // const filteredApiGenres = apiGenres.map(genre => {
-            //     return {
-            //         name : genre.name,
-            //     }
-            // })
             for await(let genre of apiGenres) {
                 await Genre.create({
                         name : genre.name

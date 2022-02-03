@@ -100,6 +100,7 @@ export default function Videogames() {
           <Loading />
         ) : (
           <>
+            {paginatedVideogames.length < 1 ? 'Nothing here dude' : null}
             <div className={styles.videogameList}>
               {paginatedVideogames.map((videogame) => {
                 return (
@@ -110,13 +111,15 @@ export default function Videogames() {
                 );
               })}
             </div>
+            {games.length > 15 ? (
             <div className={styles.pagination}>
               <Pagination
                 totalVideogames={games.length}
                 videogamesForPage={videogamesForPage}
                 paginate={paginate}
               />
-            </div>
+            </div>) : null
+            }
           </>
         )}
       </div>

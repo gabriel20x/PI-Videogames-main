@@ -1,6 +1,6 @@
 import styles from "./input.module.css";
 
-export default function Index({ name, type, error, action }) {
+export default function Index({ name, type, error, action, value }) {
   const capitalyze = name.charAt(0).toUpperCase() + name.slice(1);
   return (
     <>
@@ -13,6 +13,7 @@ export default function Index({ name, type, error, action }) {
               onChange={(e) => action(e)}
               type="text"
               name="description"
+              value={value}
             />{" "}
             {error.description && <span className={styles.error}>{error.description}</span>}
           </>
@@ -23,8 +24,7 @@ export default function Index({ name, type, error, action }) {
               type={type}
               onChange={(e) => action(e)}
               name={name.toLowerCase()}
-              min="1900-01-01"
-              max="2022-12-31"
+              value={value}
             />{" "}
             {error[name] && <p className={styles.error}>{error[name]}</p>}
           </>

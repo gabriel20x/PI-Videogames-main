@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { createVideogame, getGenres } from "../../Redux/actions";
 import Checkbox from "../checkbox/checkbox";
-import GenresList from "../genreslist/GenresList";
 import styles from "./create.module.css";
 import Input from "./input/input";
 import Loading from "../loading/loading";
@@ -20,15 +19,22 @@ export default function Create() {
     "Linux",
     "Another",
   ];
+  let addZero = function (date){
+    if(date < 10) return `0${date}`
+    return date
+  }
+  const today = new Date()
+  const notFuture = `${today.getFullYear()}-${addZero(today.getMonth()+1)}-${addZero(today.getDate())}` 
   const [error, setError] = useState({});
-  const [input, setInput] = useState({
+  const initialState = {
     name: "",
     description: "",
     released: "",
-    rating: 0,
+    rating: "",
     platforms: [],
     genres: [],
-  });
+  }
+  const [input, setInput] = useState(initialState);
   let genres = useSelector((state) => state.genres);
   let navigate = useNavigate();
 
@@ -73,9 +79,9 @@ export default function Create() {
 
     if (!input.description) {
       error.description = "Description required";
-    } else if (!/^[A-Z][\s\w\W]{1,300}$/.test(input.description)) {
+    } else if (!/^[A-Z][\s\w\W]{1,250}$/.test(input.description)) {
       error.description =
-        "Description must begin with a capital letter, have no more than 300 characters";
+        "Description must begin with a capital letter, have no more than 250 characters";
     }
 
     if (!input.released) {
@@ -84,6 +90,8 @@ export default function Create() {
       !/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/.test(input.released)
     ) {
       error.released = "Released must be a valid date. Format: yyyy-mm-dd";
+    } else if(new Date(input.released) > new Date(notFuture)) {
+        error.released = "Come back to your future.";
     }
 
     if (!input.rating) {
@@ -109,9 +117,14 @@ export default function Create() {
 
   const handleSubmit = function (e) {
     e.preventDefault();
-    console.log(input)
+    // console.log(input)
     dispatch(createVideogame(input));
-    navigate(-1);
+    let confirm = window.confirm('Videojuego creado, ¿desea crear otro?')
+    if(confirm) {
+      setInput(initialState)
+      return
+    }
+    return navigate('/videogames')
   };
 
   const handleInputChange = function (e) {
@@ -137,24 +150,28 @@ export default function Create() {
           type={"text"}
           name={"name"}
           error={error}
+          value = {input.name}
         />
         <Input
           action={handleInputChange}
           type={"date"}
           name={"released"}
           error={error}
+          value = {input.released}
         />
         <Input
           action={handleInputChange}
           type={"text"}
           name={"rating"}
           error={error}
+          value = {input.rating}
         />
         <Input
           action={handleInputChange}
           type={"text"}
           name={"description"}
           error={error}
+          value = {input.description}
         />
         <fieldset className={styles.checkbox}>
           <fieldset className={styles.genre}>
@@ -189,9 +206,12 @@ export default function Create() {
           </fieldset>
         </fieldset>
         <fieldset className={`button_container ${styles.button}`}>
-          <button className='button_list' type="submit" disabled={Object.values(error).length > 0}>
-            <div className="button_list_item">Create</div>
-          </button>
+          {(Object.values(error).length > 0) ? 
+            <h4 className={styles.no_button}> Complete the fields to save your progress </h4> :
+            <button className='button_list' type="submit" disabled={Object.values(error).length > 0}>
+              <div className="button_list_item">Save</div>
+            </button>
+          }
         </fieldset>
       </form>
     </div>

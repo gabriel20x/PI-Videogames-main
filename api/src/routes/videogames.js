@@ -25,9 +25,7 @@ router.get('/', async (req,res,next) => {
         return {
             id : game.id,
             name : game.name,
-            // released : game.released,
             rating : game.rating,
-            // platforms : game.platforms,
             genres : game.genres,
             background_image : game.background_image
         }

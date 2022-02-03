@@ -4,14 +4,15 @@
     justify-content: center;
     overflow: hidden;
     width: 70%;
+    min-width: 680px;
     margin: auto;
 }
 
 
 .card{
     display: grid;
-    grid-template-columns: 1000px;
-    grid-template-rows: auto 300px 100px;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto auto;
     grid-template-areas: "image" "description" "properties";
     border-radius: 18px;
     background: white;
@@ -33,32 +34,38 @@
 
 .description{
     grid-area: description;
-    
+    text-align: start;
+    margin: auto 10px;
 }
 
 .properties{
     grid-area: properties;
     display: grid;
-    grid-template-columns: 3fr 3fr 3fr 1fr;
+    grid-template-columns: 2fr 3fr 3fr 1fr;
     grid-template-rows: 1fr;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     background: rgb(255, 7, 110);
+    align-items: center;
+    padding: 10px;
+    list-style: none;
 }
 
-.genres{
-
-}
-
-.platforms{
-
-}
-
-.rating{
+.genres, .platforms{
+    text-align: start;
+    margin: auto;
 
 }
 
-.released{
+.properties h4{
+    text-align: center;
+}
 
+.properties li{
+    margin: 2px 0;
+}
+
+.properties div{
+    height: -webkit-fill-available;
 }
 

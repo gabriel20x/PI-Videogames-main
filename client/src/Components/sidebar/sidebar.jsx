@@ -9,6 +9,7 @@ import Checkbox from '../checkbox/checkbox';
 
 export default function Sidebar({filters,setFilters}) {
   let [name, setName] = useState({name:'',active:false});
+  let [lastSearch,setLast] = useState('')
   const genres = useSelector((state) => state.genres);
   const dispatch = useDispatch();
 
@@ -20,15 +21,13 @@ export default function Sidebar({filters,setFilters}) {
           ...name,
           active: false
         })
-        console.log(name)
       }
-      console.log(name)
       return
-    } 
-    dispatch(searchVideogames(name.name));
+    }
+    if(lastSearch !== name.name) dispatch(searchVideogames(name.name));
+    setLast(name.name)
     setName({
       ...name,
-      name: '',
       active: true
     });
   };

@@ -11,19 +11,24 @@ export default function Videogame({videogame}){
     navigate(id.toString())
   }
   const backgroundImage = { backgroundImage: `url(${img})`}
+  const containerStyle = styles.container + 
+                        `${(videogame.name.length > 22) ? ' ' + styles.longName : ''}` +
+                        `${(videogame.name.length > 35) ? ' ' + styles.largeName : ''}`
   return <>
-  <div className={styles.container}>
+  <div className={containerStyle}>
   <div className={styles.videogameImg} style={backgroundImage}  onClick={handleDetail}>
     <div className={styles.shadow}>
-        <div className={styles.genreBanner}>
+      {videogame.genres.length > 0 ? (
+      <div className={styles.genreBanner}>
           {videogame.genres.map((genre,index)=>{
             return <React.Fragment key={index}>{`${genre.name} `}</React.Fragment>
           })}
-        </div>
+      </div>) : null
+    }
         <div className={styles.ratingBanner}>{videogame.rating}</div>
     </div>
   </div>  
-  <div>{videogame.name}</div>
+  <div className={styles.gameName} >{videogame.name}</div>
 </div>
   </>
 }

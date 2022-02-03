@@ -25,7 +25,7 @@
   width: 100%;
   background-color: white;
   border-radius: 0.25rem;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #512da8;
   outline: none;
 
   /* List some properties that might change */
@@ -36,11 +36,6 @@
 .input[type="text"] {
   text-align: center;
 }
-
-/* .input[type="text"],
-.textarea:focus {
-  border-color: rgb(126, 239, 132);
-} */
 
 .error{
   text-align: start;

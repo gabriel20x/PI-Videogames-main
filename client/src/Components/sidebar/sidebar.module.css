@@ -6,7 +6,7 @@ select {
   outline: 0;
   box-shadow: none;
   border: 0 !important;
-  background: #5c6664;
+  background: #4e4e4e;
   background-image: none;
   flex: 1;
   padding: 0 0.5em;
@@ -25,7 +25,7 @@ select::-ms-expand {
   width: 20em;
   height: 3em;
   line-height: 3;
-  background: #5c6664;
+  background: #4e4e4e;
   overflow: hidden;
   border-radius: 0.25em;
   margin: auto;
@@ -36,13 +36,13 @@ select::-ms-expand {
   top: 0;
   right: 0;
   padding: 0 1em;
-  background: #2b2e2e;
+  background: #262626;
   cursor: pointer;
   pointer-events: none;
   transition: 0.25s all ease;
 }
 .select:hover::after {
-  color: #23b499;
+  color: #512da8;
 }
 
 .checklist{

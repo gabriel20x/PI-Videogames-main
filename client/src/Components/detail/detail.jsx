@@ -5,6 +5,7 @@ import { useParams } from "react-router"
 import { getVideogameDetail,cleanDetail } from "../../Redux/actions"
 import styles from './detail.module.css'
 import localImg from '../../Images/localimg.png'
+import Loading from "../loading/loading"
 
 export default function Detail(){
   let {id} = useParams()
@@ -16,6 +17,7 @@ export default function Detail(){
     return dispatch(cleanDetail())
   },[])
   return <>
+  {!videogame.name ? <Loading/> : (
   <div className={styles.container}>
     <div className={styles.card}>
       <div className={styles.image}>
@@ -25,31 +27,33 @@ export default function Detail(){
       
       <div className={styles.description} dangerouslySetInnerHTML={{__html: videogame.description}}></div>
       
-
       <div className={styles.properties}>
 
         <div className={styles.genres}>
+          <h4>Genres<br/></h4>
           {videogame.genres?.map((genre)=>{
-            return <span>{genre.name}</span>
+            return <li>{genre.name}</li>
           })}
         </div>
 
         <div className={styles.platforms}>
+          <h4>Platforms<br/></h4>
           {videogame.platforms?.map((platform)=>{
             if(platform.platform){
-              return <span>{platform.platform.name}</span>
+              return <li>{platform.platform.name + ' '}</li>
             } else {
-              return <span>{platform}</span>
+              return <li>{platform}</li>
             }
           })}
         </div>
 
-
         <div className={styles.released}>
+          <h4>Released<br/></h4>
           {videogame.released}
         </div>
 
         <div className={styles.rating}>
+          <h4>Rating<br/></h4>
           {videogame.rating}
         </div>
 
@@ -58,5 +62,7 @@ export default function Detail(){
     </div>
 
   </div>
+
+  )}
   </>
 }
